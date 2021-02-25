@@ -173,9 +173,9 @@ func writeLevel(encoding string, writer io.Writer, reader io.Reader, level int) 
 		return false, "", err
 	}
 
-	switch outputWriter.(type) {
+	switch outputWriter := outputWriter.(type) {
 	case io.WriteCloser:
-		outputWriter.(io.WriteCloser).Close()
+		outputWriter.Close()
 	}
 	return encoding != "", encoding, nil
 }
