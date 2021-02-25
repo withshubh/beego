@@ -758,9 +758,9 @@ func Trace(f interface{}, v ...interface{}) {
 
 func formatLog(f interface{}, v ...interface{}) string {
 	var msg string
-	switch f := f.(type) {
+	switch f.(type) {
 	case string:
-		msg = f
+		msg = f.(string)
 		if len(v) == 0 {
 			return msg
 		}
