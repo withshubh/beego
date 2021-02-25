@@ -154,10 +154,10 @@ func (c *ConfigContainer) sub(key string) (map[string]interface{}, error) {
 	keys := strings.Split(key, ".")
 	for idx, k := range keys {
 		if v, ok := tmpData[k]; ok {
-			switch v.(type) {
+			switch v := v.(type) {
 			case map[string]interface{}:
 				{
-					tmpData = v.(map[string]interface{})
+					tmpData = v
 					if idx == len(keys)-1 {
 						return tmpData, nil
 					}
@@ -346,10 +346,10 @@ func (c *ConfigContainer) getData(key string) (interface{}, error) {
 	tmpData := c.data
 	for idx, k := range keys {
 		if v, ok := tmpData[k]; ok {
-			switch v.(type) {
+			switch v := v.(type) {
 			case map[string]interface{}:
 				{
-					tmpData = v.(map[string]interface{})
+					tmpData = v
 					if idx == len(keys)-1 {
 						return tmpData, nil
 					}
